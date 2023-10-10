@@ -1,0 +1,68 @@
+<!--
+   Proširivanje osnovnog templatea 'base.html' kako bi se dodali specifični dijelovi sadržaja
+   na ovoj podstranici.
+-->
+{% extends "base.html" %}
+{% block content %}
+<!--
+   Provjera je li korisnik prijavljen. Ako je, prikazuje se sadržaj košarice.
+   Ako nije, prikazuje se poruka koja potiče korisnika na registraciju.
+-->
+{% if current_user.is_authenticated %}
+<img class="logo" src="./static/img/logo.png">
+<br><br>
+<h1> Vaša košarica </h1>
+<br><br><br><br>
+<!--
+   Stvaranje tablice za prikaz stavki u košarici. Tablica uključuje kolone za naslov proizvoda,
+   količinu, cijenu po komadu, ukupnu cijenu i opciju za uklanjanje proizvoda iz košarice.
+-->
+<table class="tablecart">
+
+    <tr>
+        <th>Proizvod</th>
+        <th>Količina</th>
+        <th>Cijena</th>
+        <th>Ukupno</th>
+        <th>Ukloni proizvod</th>
+    </tr>
+
+    <!--
+     Iteracija kroz stavke u košarici i popunjavanje redaka tablice s odgovarajućim informacijama.
+  -->
+    {% for key, value in display_cart.items() %}
+    <tr>
+        <td>{{ value["title"] }}</td>
+        <td>{{ value["quantity"] }}</td>
+        <td>{{ "%.2f" % value["price"]}} €</td>
+        <td>{{ "%.2f" % (value["quantity"] * value["price"])}} €</td>
+
+        <td>
+            <form action="{{ url_for('delete_book', book_id=key|int) }}" method="POST">
+                <input class="" type="submit" value="Ukloni">
+            </form>
+        </td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+<br><br><br><br><br><br><br><br><br>
+<!--
+   Prikazivanje ukupne količine proizvoda i ukupne cijene košarice.
+-->
+<h3>Broj proizvoda: {{ total_quantity }} </h3>
+<h3>Ukupna cijena: {{ total }} € </h3>
+<br>
+<!--
+   Gumb za nastavak procesa kupovine. Kada korisnik klikne na gumb, bit će preusmjeren na
+   stranicu za provjeru.
+-->
+<a href="{{ url_for('checkout') }}">
+    <button class="action-button"> Kupovina</button>
+</a>
+
+{% else %}
+<br><h1>Molimo registrirajte se kako bi dodavali stavke u košaricu</h1>
+{% endif %}
+{% endblock content %}

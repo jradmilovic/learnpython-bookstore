@@ -1,0 +1,230 @@
+body {
+    background-color: whitesmoke;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Optima";
+    color: #fff;
+    text-align: center;
+}
+
+.logo {
+    position: fixed;
+    left: 30px;
+    top: 70px;
+    z-index: -1;
+}
+
+.logo2 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+}
+
+img {
+    border-radius: 8px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 15%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #4773a3;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+li {
+    float: left;
+    font-size: 20px
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    font-family: "Optima";
+    padding: 10px 50px;
+    text-decoration: none;
+}
+
+li a2 {
+    display: block;
+    color: white;
+    text-align: center;
+    font-family: "Optima";
+    padding: 10px 50px;
+    text-decoration: none;
+}
+
+h1 {
+    padding-left: 20px;
+    color: #4773a3;
+    font-family: "Optima";
+    font-size: 300%;
+}
+
+a.h1 {
+    padding-left: 20px;
+    color: #18afa2;
+    font-family: "Optima";
+    font-size: 300%;
+}
+
+a.p2 {
+    padding-left: 20px;
+    color: #4773a3;
+    font-family: "Optima";
+    font-size: 150%;
+}
+
+h3 {
+    font-family: "Optima";
+    font-size: 30px;
+    color: #4773a3;
+}
+
+p {
+    padding-left: 20px;
+    color: black;
+    font-family: "Optima";
+    font-size: 20px;
+}
+
+p1 {
+    padding-left: 20px;
+    color: #4773a3;
+    font-family: "Optima";
+    font-size: 25px;
+}
+
+p2 {
+    padding-left: 20px;
+    color: #4773a3;
+    font-size: 20px;
+    font-family: "Optima";
+}
+
+
+table {
+    width: 100%;
+}
+
+th {
+    height: 50px;
+    background-color: #4773a3;
+    color: white;
+    font-size: 20px;
+}
+
+tr {
+    font-size: 20px;
+    color: black;
+}
+
+li.new {
+    position: fixed;
+    top: 40px;
+    left: 50px;
+    z-index: -1;
+}
+
+a {
+    text-decoration: none;
+}
+
+.action-button {
+    --b: 3px;
+    --s: .15em;
+    --c: #4773a3;
+
+    padding: calc(.3em + var(--s)) calc(.4em + var(--s));
+    color: var(--c);
+    --_p: var(--s);
+    background: conic-gradient(from 90deg at var(--b) var(--b), #0000 90deg, var(--c) 0) var(--_p) var(--_p)/calc(100% - var(--b) - 2 * var(--_p)) calc(100% - var(--b) - 2 * var(--_p));
+    transition: .3s linear, color 0s, background-color 0s;
+    outline: var(--b) solid #0000;
+    outline-offset: .2em;
+}
+
+.action-button:hover,
+.action-button:focus-visible {
+    --_p: 0px;
+    outline-color: var(--c);
+    outline-offset: .05em;
+}
+
+.action-button:active {
+    background: var(--c);
+    color: #fff;
+}
+
+.action-button {
+    font-family: "Optima";
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: none;
+    margin: .1em;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.form-submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+}
+
+.form-group span, .form-group input {
+    margin: 0 0.5em;
+}
+
+.form-group input {
+    text-align: right;
+}
+
+.regular-text {
+    color: #4773a3;
+}
+
+.error-text {
+    color: red;
+    margin-left: 0.5em;
+}
+
+#flash-messages {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+    z-index: 9999;
+}
+
+.flash-message {
+    background-color: #4773a3;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}

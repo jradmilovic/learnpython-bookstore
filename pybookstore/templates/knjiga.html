@@ -1,0 +1,29 @@
+<!--
+   Proširivanje osnovnog templatea 'base.html' kako bi se dodali specifični dijelovi sadržaja
+   na ovoj podstranici.
+-->
+{% extends "base.html" %}
+{% block content %}
+<br><br><br><br><br>
+<img src="{{ url_for('static', filename='img/' + book.image_file) }}">
+
+<!--
+   Prikazivanje naslova, autora, opisa i cijene knjige.
+-->
+<p><strong>{{ book.title }}</strong> <br>
+    Autor: {{ book.author }} </p>
+<p2>{{book.description }}</p2>
+<p>Cijena: <strong>{{ book.price }}€</strong></p>
+{% if current_user.is_authenticated %}
+<br><br>
+<!--
+   Gumb za dodavanje knjige u košaricu. Kad korisnik klikne na gumb, bit će preusmjeren
+   na rutu '/dodaj_u_kosaricu/{{book.id}}' koja će dodati knjigu u košaricu.
+-->
+<a href="/dodaj_u_kosaricu/{{book.id}}">
+    <button class="action-button"> Dodaj u košaricu</button>
+</a>
+{% else %}
+<br><h1>Molimo registrirajte se kako bi dodavali stavke u košaricu</h1>
+{% endif %}
+{% endblock content %}

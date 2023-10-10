@@ -1,0 +1,49 @@
+<!--
+   Proširivanje osnovnog templatea 'base.html' kako bi se dodali specifični dijelovi sadržaja
+   na ovoj podstranici.
+-->
+{% extends "base.html" %}
+{% block content %}
+<img class="logo" src="./static/img/logo.png">
+<br><br><br><br>
+<br><br><br><br>
+<div class="form-container">
+    <!--
+ Forma za registraciju korisnika.
+-->
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            <span class="regular-text"> {{ form.username.label }} </span> {{ form.username }}
+            {% for error in form.username.errors %}
+            <span class="error-text">[{{ error }}]</span>
+            {% endfor %}
+            <br><br>
+        </div>
+        <div class="form-group">
+            <span class="regular-text"> {{ form.email.label }} </span> {{ form.email}}
+            {% for error in form.email.errors %}
+            <span class="error-text">[{{ error }}]</span>
+            {% endfor %}
+            <br><br>
+        </div>
+        <div class="form-group">
+            <span class="regular-text"> {{ form.password.label }} </span> {{ form.password}}
+            {% for error in form.password.errors %}
+            <span class="error-text">[{{ error }}]</span>
+            {% endfor %}<br><br>
+        </div>
+        <div class="form-group">
+            <span class="regular-text"> {{ form.confirm_password.label }} </span> {{ form.confirm_password}}
+            {% for error in form.confirm_password.errors %}
+            <span class="error-text">[{{ error }}]</span>
+            {% endfor %}
+            <br><br>
+        </div>
+        <div class="form-submit">
+            {{ form.submit(class="action-button") }}
+            <br><br>
+        </div>
+    </form>
+</div>
+{% endblock content %}

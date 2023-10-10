@@ -1,0 +1,86 @@
+<!--
+   Proširivanje osnovnog templatea 'base.html' kako bi se dodali specifični dijelovi sadržaja
+   na ovoj podstranici.
+-->
+{% extends "base.html" %}
+{% block content %}
+<!--
+   Prikazivanje logotipa webshopa.
+-->
+<img class="logo" src="./static/img/logo.png">
+<br><br>
+<!--
+   Prikazivanje ukupnog iznosa narudžbe.
+-->
+<h1>Ukupna narudžba: {{ total }}€ </h1>
+<br><br>
+<div class="form-container">
+    <!--
+     Forma za unos podataka o narudžbi.
+  -->
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <p1>Molimo unesite podatke za narudžbu:</p1>
+        <br><br>
+        <div class="form-group">
+            <span class="regular-text">{{ form.name.label }}</span> {{ form.name }}
+            {% for error in form.name.errors %}
+            <span class="error-text">[{{ error }}]</span>
+            {% endfor %}
+            <br><br>
+        </div>
+        <div class="form-group">
+            <span class="regular-text">{{ form.address.label }}</span> {{ form.address }}
+            {% for error in form.address.errors %}
+            <span class="error-text">[{{ error }}]</span>
+            {% endfor %}<br><br>
+        </div>
+        <div class="form-group">
+            <span class="regular-text">{{ form.city.label }}</span> {{ form.city }}
+            {% for error in form.city.errors %}
+            <span class="error-text">[{{ error }}]</span>
+            {% endfor %}<br><br>
+        </div>
+        <div class="form-group">
+            <span class="regular-text">{{ form.postcode.label }}</span> {{ form.postcode }}
+            {% for error in form.postcode.errors %}
+            <span class="error-text">[{{ error }}]</span>
+            {% endfor %}<br><br>
+        </div>
+        <br><br>
+        <div class="form-group">
+            <span class="regular-text">{{ form.cardnumber.label }}</span> {{ form.cardnumber }}
+            {% for error in form.cardnumber.errors %}
+            <span class="error-text">[{{ error }}]</span>
+            {% endfor %}<br><br>
+        </div>
+        <div class="form-group">
+            <span class="regular-text">Kartica važi do: {{ form.expirymonth.label }} / {{ form.expiryyear.label }}</span>
+            <table2>
+                <tr>
+                    <th> {{ form.expirymonth}}</th>
+                    <th> {{ form.expiryyear}}</th>
+                </tr>
+            </table2>
+        </div>
+        <div class="form-group">
+            {% for error in form.expiryyear.errors %}
+            <span class="error-text">[{{ error }}]</span>
+            {% endfor %}
+            {% for error in form.expirymonth.errors %}
+            <span class="error-text">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+            <span class="regular-text">{{ form.cvv.label }} </span> {{ form.cvv }}
+            {% for error in form.cvv.errors %}
+            <span class="error-text">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+        <div class="form-submit"><br>
+            {{ form.submit(class="action-button") }}
+        </div>
+    </form>
+</div>
+
+{% endblock content %}
